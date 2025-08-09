@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio - สมัครงาน</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-100 min-h-screen">
+
+    <!-- Navigation Bar -->
+    <div id="nav"></div>
+
+    <!-- Hero Section -->
+    <div id="hero"></div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function loadHTML(id, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(id).innerHTML = data;
+                })
+                .catch(err => console.error(`Error loading ${url}:`, err));
+        }
+
+        loadHTML('nav', 'components/nav.html');
+        loadHTML('hero', 'components/hero.html');
+        loadHTML('footer', 'components/footer.html');
+    </script>
+</body>
+</html>
+
