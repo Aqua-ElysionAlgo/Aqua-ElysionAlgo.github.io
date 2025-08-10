@@ -5,7 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เรซูเม่ - ชยากร สายกระสนุ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(0, 0px); }
+        }
+        
+        .wave-animation {
+            background: linear-gradient(-45deg, #ffd700, #87ceeb, #dda0dd, #ffd700);
+            background-size: 400% 400%;
+            animation: wave 4s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .sparkle {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sparkle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: sparkle 3s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(135, 206, 235, 0.2);
+        }
+        
+        .divine-glow {
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(135, 206, 235, 0.3);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(135, 206, 235, 0.3);
+        }
+        
+        .section-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #ffd700, #87ceeb);
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-yellow-50 via-blue-50 to-purple-100 min-h-screen">
     <!-- Header Navigation -->
@@ -34,34 +126,59 @@
     <div class="relative min-h-screen sparkle">
         <!-- Background Effects -->
         <div class="absolute inset-0 wave-animation opacity-10"></div>
+        
+        <!-- Divine Light Rays -->
         <div class="absolute inset-0">
             <div class="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-yellow-200 via-transparent to-transparent opacity-20 transform rotate-12"></div>
             <div class="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-blue-200 via-transparent to-transparent opacity-20 transform -rotate-12"></div>
         </div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <!-- Profile Section -->
+            <!-- Header Section -->
             <div class="section-card rounded-3xl p-8 mb-8 glow">
                 <div class="flex flex-col md:flex-row items-center gap-8">
                     <!-- Profile Image -->
-                    <div class="floating hero-section">
-                        <div class="profile-wrapper divine-glow">
-                            <img src="img/Pro.jpg" alt="Profile" class="profile-pic">
+                    <div class="floating">
+                        <div class="w-32 h-32 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full flex items-center justify-center divine-glow border-4 border-yellow-200">
+                            <div class="w-full h-full bg-gray-100 rounded-full flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 mx-auto mb-2 bg-gray-300 rounded-full flex items-center justify-center">
+                                        <span class="text-gray-500 text-2xl">👤</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 font-medium">รูปภาพ</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+                    
                     <!-- Personal Info -->
                     <div class="flex-1 text-center md:text-left">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2 text-glow">ชยากร สายกระสนุ</h1>
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2 text-glow">
+                            ชยากร สายกระสนุ
+                        </h1>
                         <h2 class="text-2xl text-gray-600 mb-4">CHAYAKON SAIKRASUN</h2>
                         <p class="text-xl text-yellow-600 font-semibold mb-4">ชื่อเล่น: เอิรธ์</p>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600">
-                            <div class="flex items-center space-x-2"><span class="text-yellow-500">🎂</span><span>อายุ 22 ปี (10 มิถุนายน 2546)</span></div>
-                            <div class="flex items-center space-x-2"><span class="text-blue-500">🏳️</span><span>สัญชาติไทย</span></div>
-                            <div class="flex items-center space-x-2"><span class="text-green-500">📱</span><span>065-392-5590</span></div>
-                            <div class="flex items-center space-x-2"><span class="text-purple-500">📧</span><span>chayagorn102546@gmail.com</span></div>
+                            <div class="flex items-center justify-center md:justify-start space-x-2">
+                                <span class="text-yellow-500">🎂</span>
+                                <span>อายุ 22 ปี (10 มิถุนายน 2546)</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start space-x-2">
+                                <span class="text-blue-500">🏳️</span>
+                                <span>สัญชาติไทย</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start space-x-2">
+                                <span class="text-green-500">📱</span>
+                                <span>065-392-5590</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start space-x-2">
+                                <span class="text-purple-500">📧</span>
+                                <span>chayagorn102546@gmail.com</span>
+                            </div>
                         </div>
-                        <div class="mt-4 flex items-center space-x-2">
+                        
+                        <div class="mt-4 flex items-start justify-center md:justify-start space-x-2">
                             <span class="text-red-500">📍</span>
                             <span class="text-gray-600">5 หมู่ที่ 18 ต.เมืองลีง อ.จอมพระ จ.สุรินทร์ 32180</span>
                         </div>
@@ -116,20 +233,148 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Experience Section -->
+            <div class="section-card rounded-3xl p-8 mb-8 glow">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                    <span class="bg-gradient-to-r from-yellow-600 to-blue-600 bg-clip-text text-transparent">💼 ประวัติการฝึกงาน</span>
+                </h3>
+                
+                <div class="bg-white/70 rounded-2xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-xl">🏢</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-semibold text-gray-800 mb-2">บริษัท นานาไรซ์ (ไทยแลนด์) จำกัด</h4>
+                            <p class="text-gray-600 mb-1"><strong>ปีที่ฝึกงาน:</strong> 2565</p>
+                            <p class="text-gray-600">ได้รับประสบการณ์ในการทำงานจริงและเรียนรู้กระบวนการทำงานในองค์กร</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="section-card rounded-3xl p-8 mb-8 glow">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                    <span class="bg-gradient-to-r from-yellow-600 to-blue-600 bg-clip-text text-transparent">⚡ ทักษะความสามารถ</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Programming Languages -->
+                    <div class="bg-white/70 rounded-2xl p-6 border border-purple-200 hover:shadow-lg transition-all duration-300">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 mx-auto bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-white text-2xl">💻</span>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">ภาษาโปรแกรม</h4>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">PHP</span>
+                                    <span class="text-gray-500 text-sm">80%</span>
+                                </div>
+                                <div class="skill-bar" style="width: 80%"></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">Python</span>
+                                    <span class="text-gray-500 text-sm">75%</span>
+                                </div>
+                                <div class="skill-bar" style="width: 75%"></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">HTML</span>
+                                    <span class="text-gray-500 text-sm">90%</span>
+                                </div>
+                                <div class="skill-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Software -->
+                    <div class="bg-white/70 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 mx-auto bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-white text-2xl">🎨</span>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">โปรแกรม</h4>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">Adobe Photoshop</span>
+                                    <span class="text-gray-500 text-sm">85%</span>
+                                </div>
+                                <div class="skill-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hardware -->
+                    <div class="bg-white/70 rounded-2xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300">
+                        <div class="text-center mb-4">
+                            <div class="w-16 h-16 mx-auto bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-white text-2xl">🔧</span>
+                            </div>
+                            <h4 class="text-xl font-semibold text-gray-800">ฮาร์ดแวร์</h4>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">ประกอบคอมพิวเตอร์</span>
+                                    <span class="text-gray-500 text-sm">70%</span>
+                                </div>
+                                <div class="skill-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Floating Elements -->
-        <div class="absolute top-20 left-10 w-4 h-4 bg-yellow-400 rounded-full opacity-60 floating glow"></div>
-        <div class="absolute top-40 right-20 w-6 h-6 bg-purple-400 rounded-full opacity-40 floating glow"></div>
-        <div class="absolute bottom-40 left-20 w-3 h-3 bg-blue-400 rounded-full opacity-50 floating glow"></div>
-        <div class="absolute bottom-20 right-10 w-5 h-5 bg-yellow-300 rounded-full opacity-30 floating glow"></div>
+        <div class="absolute top-20 left-10 w-4 h-4 bg-yellow-400 rounded-full opacity-60 floating glow" style="animation-delay: 0s;"></div>
+        <div class="absolute top-40 right-20 w-6 h-6 bg-purple-400 rounded-full opacity-40 floating glow" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-40 left-20 w-3 h-3 bg-blue-400 rounded-full opacity-50 floating glow" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 right-10 w-5 h-5 bg-yellow-300 rounded-full opacity-30 floating glow" style="animation-delay: 0.5s;"></div>
     </div>
 
-    <script src="script.js"></script>
     <script>
         function downloadPDF() {
             alert('ฟีเจอร์ดาวน์โหลด PDF จะพร้อมใช้งานเร็วๆ นี้!\nขณะนี้สามารถใช้ปุ่ม "พิมพ์เรซูเม่" แล้วเลือก "Save as PDF" ได้ครับ');
         }
+
+        // Add floating animation to elements on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating');
+            const speed = 0.5;
+
+            parallax.forEach(element => {
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        });
+
+        // Print styles
+        const printStyles = `
+            @media print {
+                .sparkle::before { display: none; }
+                .floating { animation: none; }
+                .glow { box-shadow: none; }
+                .divine-glow { box-shadow: none; }
+                nav { display: none; }
+                body { background: white; }
+                .section-card { background: white; border: 1px solid #ddd; }
+            }
+        `;
+        
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = printStyles;
+        document.head.appendChild(styleSheet);
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96cf3d019149ee62',t:'MTc1NDgyNjIzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
