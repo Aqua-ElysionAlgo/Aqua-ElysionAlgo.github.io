@@ -88,3 +88,47 @@ body {
 .text-glow {
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(135, 206, 235, 0.3);
 }
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(135, 206, 235, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(135, 206, 235, 0.6);
+}
+
+.profile-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700, #87ceeb, #dda0dd, #ffd700);
+    background-size: 300% 300%;
+    animation: wave 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+.profile-wrapper img {
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    border: 4px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-wrapper img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(135, 206, 235, 0.6);
+}
