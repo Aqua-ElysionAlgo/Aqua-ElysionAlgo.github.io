@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,73 +8,93 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Kanit', sans-serif;
         }
-        
+
         .floating {
             animation: floating 4s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
-        
+
         .water-flow {
             background: linear-gradient(45deg, #87ceeb, #ffd700, #dda0dd, #87ceeb);
             background-size: 300% 300%;
             animation: waterFlow 6s ease-in-out infinite;
         }
-        
+
         @keyframes waterFlow {
-            0%, 100% { background-position: 0% 50%; }
-            33% { background-position: 100% 0%; }
-            66% { background-position: 0% 100%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            33% {
+                background-position: 100% 0%;
+            }
+
+            66% {
+                background-position: 0% 100%;
+            }
         }
-        
+
         .bubble {
             position: absolute;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             animation: bubble 8s infinite linear;
         }
-        
+
         @keyframes bubble {
             0% {
                 transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100px) scale(1);
                 opacity: 0;
             }
         }
-        
+
         .glass-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-        
+
         .divine-shadow {
             box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2), 0 0 80px rgba(135, 206, 235, 0.15);
         }
-        
+
         .timeline-line {
             background: linear-gradient(to bottom, #ffd700, #87ceeb, #dda0dd);
             width: 4px;
             position: relative;
         }
-        
+
         .timeline-dot {
             width: 20px;
             height: 20px;
@@ -84,7 +105,7 @@
             left: -10px;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
-        
+
         .skill-circle {
             width: 120px;
             height: 120px;
@@ -95,7 +116,7 @@
             justify-content: center;
             position: relative;
         }
-        
+
         .skill-circle::before {
             content: '';
             width: 90px;
@@ -104,22 +125,22 @@
             border-radius: 50%;
             position: absolute;
         }
-        
+
         .skill-text {
             position: relative;
             z-index: 10;
             text-align: center;
         }
-        
+
         .hover-lift {
             transition: all 0.3s ease;
         }
-        
+
         .hover-lift:hover {
             transform: translateY(-10px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
-        
+
         .gradient-text {
             background: linear-gradient(45deg, #ffd700, #87ceeb, #dda0dd);
             -webkit-background-clip: text;
@@ -128,6 +149,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-blue-100 via-purple-50 to-yellow-100 min-h-screen overflow-x-hidden">
     <!-- Floating Bubbles -->
     <div class="bubble" style="left: 10%; width: 20px; height: 20px; animation-delay: 0s;"></div>
@@ -147,13 +169,15 @@
                         <div class="w-12 h-12 water-flow rounded-full flex items-center justify-center">
                             <span class="text-white font-bold text-xl">🌊</span>
                         </div>
-                        <span class="text-2xl font-bold gradient-text">เรซูเม่ดิจิทัล</span>
+                        <span class="text-2xl font-bold gradient-text">บริษัท แอดวานซ์ คอนแท็ค เซ็นเตอร์ จำกัด</span>
                     </div>
                     <div class="flex space-x-4">
-                        <button onclick="window.print()" class="glass-card hover-lift px-6 py-2 rounded-full font-medium text-gray-700 hover:text-blue-600">
+                        <button onclick="window.print()"
+                            class="glass-card hover-lift px-6 py-2 rounded-full font-medium text-gray-700 hover:text-blue-600">
                             🖨️ พิมพ์
                         </button>
-                        <button onclick="shareResume()" class="glass-card hover-lift px-6 py-2 rounded-full font-medium text-gray-700 hover:text-purple-600">
+                        <button onclick="shareResume()"
+                            class="glass-card hover-lift px-6 py-2 rounded-full font-medium text-gray-700 hover:text-purple-600">
                             📤 แชร์
                         </button>
                     </div>
@@ -171,10 +195,11 @@
                     <div class="w-40 h-40 mx-auto water-flow rounded-full p-2 divine-shadow">
                         <div class="w-full h-full bg-white rounded-full flex items-center justify-center">
                             <div class="text-center">
-                                <div class="w-16 h-16 mx-auto mb-3 bg-gray-200 rounded-full flex items-center justify-center">
-                                    <span class="text-gray-400 text-3xl">👤</span>
+                                <div
+                                    class="w-full h-full bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+                                    <img src="../img/Pro.jpg" alt="Profile Image"
+                                        class="w-full h-full object-cover rounded-full" />
                                 </div>
-                                <p class="text-sm text-gray-500 font-medium">รูปโปรไฟล์</p>
                             </div>
                         </div>
                     </div>
@@ -182,10 +207,10 @@
 
                 <!-- Name and Title -->
                 <h1 class="text-5xl md:text-7xl font-bold gradient-text mb-4">
-                    ชยากร สายกระสนุ
+                    ชยากร สายกระสุน
                 </h1>
                 <h2 class="text-2xl md:text-3xl text-gray-600 mb-2">CHAYAKON SAIKRASUN</h2>
-                <p class="text-xl text-blue-600 font-semibold mb-8">เอิรธ์ | นักพัฒนาเทคโนโลยี</p>
+                <p class="text-xl text-blue-600 font-semibold mb-8">เอิร์ธ | นักพัฒนาเทคโนโลยี</p>
 
                 <!-- Contact Cards -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
@@ -215,11 +240,11 @@
     <section class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-4xl font-bold text-center gradient-text mb-16">📚 การศึกษา</h3>
-            
+
             <div class="relative">
                 <!-- Timeline Line -->
                 <div class="timeline-line absolute left-1/2 transform -translate-x-1/2 h-full"></div>
-                
+
                 <!-- Education Items -->
                 <div class="space-y-16">
                     <!-- Current Education -->
@@ -228,7 +253,8 @@
                         <div class="w-1/2 pr-8">
                             <div class="glass-card hover-lift rounded-3xl p-8 ml-auto divine-shadow">
                                 <div class="text-right">
-                                    <div class="inline-block water-flow w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                                    <div
+                                        class="inline-block water-flow w-16 h-16 rounded-full flex items-center justify-center mb-4">
                                         <span class="text-white text-2xl">🎓</span>
                                     </div>
                                     <h4 class="text-2xl font-bold text-gray-800 mb-2">ปริญญาตรี</h4>
@@ -236,7 +262,8 @@
                                     <p class="text-gray-600 mb-2">Data Science & AI</p>
                                     <p class="text-gray-500 text-sm mb-2">มหาวิทยาลัยกาฬสินธุ์</p>
                                     <p class="text-gray-500 text-sm mb-3">2565 – ปัจจุบัน</p>
-                                    <div class="inline-block bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                    <div
+                                        class="inline-block bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">
                                         GPA 3.63
                                     </div>
                                 </div>
@@ -255,14 +282,16 @@
                         </div>
                         <div class="w-1/2 pl-8">
                             <div class="glass-card hover-lift rounded-3xl p-8 divine-shadow">
-                                <div class="inline-block water-flow w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                                <div
+                                    class="inline-block water-flow w-16 h-16 rounded-full flex items-center justify-center mb-4">
                                     <span class="text-white text-2xl">🎨</span>
                                 </div>
                                 <h4 class="text-2xl font-bold text-gray-800 mb-2">ปวช. ศิลปกรรม</h4>
                                 <p class="text-purple-600 font-semibold mb-2">คอมพิวเตอร์กราฟิก</p>
                                 <p class="text-gray-500 text-sm mb-2">วิทยาลัยอาชีวศึกษาสุรินทร์</p>
                                 <p class="text-gray-500 text-sm mb-3">2562 – 2564</p>
-                                <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                <div
+                                    class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">
                                     GPA 3.40
                                 </div>
                             </div>
@@ -277,7 +306,7 @@
     <section class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-4xl font-bold text-center gradient-text mb-16">💼 ประสบการณ์</h3>
-            
+
             <div class="max-w-2xl mx-auto">
                 <div class="glass-card hover-lift rounded-3xl p-8 divine-shadow">
                     <div class="flex items-start space-x-6">
@@ -289,7 +318,7 @@
                             <p class="text-blue-600 font-semibold mb-2">นักศึกษาฝึกงาน</p>
                             <p class="text-gray-500 mb-4">ปี 2565</p>
                             <p class="text-gray-600 leading-relaxed">
-                                ได้รับประสบการณ์ในการทำงานจริงและเรียนรู้กระบวนการทำงานในองค์กร 
+                                ได้รับประสบการณ์ในการทำงานจริงและเรียนรู้กระบวนการทำงานในองค์กร
                                 พัฒนาทักษะการทำงานเป็นทีมและการแก้ไขปัญหา
                             </p>
                         </div>
@@ -303,7 +332,7 @@
     <section class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-4xl font-bold text-center gradient-text mb-16">⚡ ทักษะ</h3>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Programming -->
                 <div class="text-center">
@@ -408,22 +437,26 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 class="text-4xl font-bold gradient-text mb-8">📞 ติดต่อ</h3>
             <p class="text-xl text-gray-600 mb-12">พร้อมสร้างสรรค์ผลงานที่ยอดเยี่ยมร่วมกัน</p>
-            
+
             <div class="flex justify-center space-x-6 mb-8">
-                <a href="tel:065-392-5590" class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
+                <a href="tel:065-392-5590"
+                    class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
                     📱
                 </a>
-                <a href="mailto:chayagorn102546@gmail.com" class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
+                <a href="mailto:chayagorn102546@gmail.com"
+                    class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
                     📧
                 </a>
-                <a href="#" class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
+                <a href="#"
+                    class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
                     💼
                 </a>
-                <a href="#" class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
+                <a href="#"
+                    class="glass-card hover-lift w-16 h-16 rounded-full flex items-center justify-center text-2xl">
                     🌐
                 </a>
             </div>
-            
+
             <div class="glass-card rounded-2xl p-6 inline-block">
                 <p class="text-gray-600">
                     <span class="font-semibold">ที่อยู่:</span> 5 หมู่ที่ 18 ต.เมืองลีง อ.จอมพระ จ.สุรินทร์ 32180
@@ -483,5 +516,7 @@
             observer.observe(card);
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d39476524aee2d',t:'MTc1NDg3MTc2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'96d39476524aee2d',t:'MTc1NDg3MTc2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
 </html>
