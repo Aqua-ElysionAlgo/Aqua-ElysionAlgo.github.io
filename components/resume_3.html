@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เรซูเม่ - ชยากร สายกระสนุ (แบบที่ 3)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .aurora {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+            background-size: 600% 600%;
+            animation: aurora 12s ease-in-out infinite;
+        }
+        
+        @keyframes aurora {
+            0%, 100% { background-position: 0% 50%; }
+            20% { background-position: 100% 0%; }
+            40% { background-position: 100% 100%; }
+            60% { background-position: 0% 100%; }
+            80% { background-position: 50% 0%; }
+        }
+        
+        .cosmic-glow {
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(135, 206, 235, 0.3),
+                0 0 60px rgba(221, 160, 221, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes neon-pulse {
+            0%, 100% { filter: brightness(1) saturate(1); }
+            50% { filter: brightness(1.3) saturate(1.5); }
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, #fff, #ffd700, #87ceeb);
+            border-radius: 50%;
+            animation: shoot 4s linear infinite;
+            box-shadow: 0 0 10px #fff, 0 0 20px #ffd700, 0 0 30px #87ceeb;
+        }
+        
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: translate(-50%, -50%) rotate(-45deg);
+            animation: trail 4s linear infinite;
+        }
+        
+        @keyframes shoot {
+            0% {
+                transform: translateX(-150px) translateY(150px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(400px) translateY(-150px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes trail {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        .twinkling-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ffd700, transparent),
+                radial-gradient(1px 1px at 90px 40px, #87ceeb, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 30px, #dda0dd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 8s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .morphing-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .morphing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.8s;
+        }
+        
+        .morphing-card:hover::before {
+            left: 100%;
+        }
+        
+        .morphing-card:hover {
+            transform: scale(1.03) rotateY(3deg) translateZ(20px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(255, 215, 0, 0.2),
+                0 0 80px rgba(135, 206, 235, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hexagon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ffd700, #87ceeb, #dda0dd, #ff6b6b);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: hexagon-glow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+        }
+        
+        .hexagon::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: rgba(255, 255, 255, 0.95);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes hexagon-glow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 25px rgba(135, 206, 235, 0.7));
+                transform: scale(1.05);
+            }
+        }
+        
+        .hexagon-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .wave-skill {
+            height: 12px;
+            background: linear-gradient(90deg, #ffd700, #87ceeb, #dda0dd, #ff6b6b);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+        }
+        
+        .wave-skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            animation: wave-flow 3s infinite;
+        }
+        
+        .wave-skill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), transparent);
+            border-radius: 6px 6px 0 0;
+        }
+        
+        @keyframes wave-flow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .floating-3d {
+            animation: floating3d 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating3d {
+            0%, 100% { 
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+            }
+            33% { 
+                transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+            }
+            66% { 
+                transform: translateY(-10px) rotateX(-5deg) rotateY(-5deg);
+            }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(135, 206, 235, 0.6);
+        }
+        
+        .cosmic-border {
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #ffd700, #87ceeb, #dda0dd) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+        
+        .split-screen {
+            height: 100vh;
+            display: flex;
+        }
+        
+        .left-panel {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(135, 206, 235, 0.1));
+        }
+        
+        .right-panel {
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.1), rgba(221, 160, 221, 0.1));
+        }
+        
+        .interactive-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .interactive-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .interactive-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #ffd700, #87ceeb, #dda0dd, #ff6b6b);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+        
+        .interactive-button:hover::before {
+            left: 100%;
+        }
+        
+        .interactive-button:hover::after {
+            opacity: 0.2;
+        }
+        
+        .interactive-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen overflow-x-hidden">
+    <!-- Twinkling Stars Background -->
+    <div class="twinkling-stars fixed inset-0 pointer-events-none"></div>
+    
+    <!-- Shooting Stars -->
+    <div class="shooting-star" style="top: 15%; left: 5%; animation-delay: 0s;"></div>
+    <div class="shooting-star" style="top: 35%; left: 25%; animation-delay: 1.2s;"></div>
+    <div class="shooting-star" style="top: 55%; left: 45%; animation-delay: 2.4s;"></div>
+    <div class="shooting-star" style="top: 25%; left: 65%; animation-delay: 1.8s;"></div>
+    <div class="shooting-star" style="top: 75%; left: 15%; animation-delay: 0.6s;"></div>
+    <div class="shooting-star" style="top: 10%; left: 85%; animation-delay: 3s;"></div>
+    <div class="shooting-star" style="top: 65%; left: 75%; animation-delay: 2.1s;"></div>
+    <div class="shooting-star" style="top: 45%; left: 5%; animation-delay: 3.6s;"></div>
+
+    <!-- Aurora Background -->
+    <div class="aurora fixed inset-0 opacity-25 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 morphing-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="hexagon w-12 h-12">
+                        <div class="hexagon-content">
+                            <span class="text-blue-600 font-bold text-lg">⭐</span>
+                        </div>
+                    </div>
+                    <span class="text-2xl font-bold text-white glow-text">เรซูเม่ คอสมิค</span>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="window.print()" class="interactive-button morphing-card px-6 py-2 rounded-full font-medium text-white hover:text-yellow-300">
+                        🚀 พิมพ์
+                    </button>
+                    <button onclick="downloadResume()" class="interactive-button morphing-card px-6 py-2 rounded-full font-medium text-white hover:text-blue-300">
+                        💫 ดาวน์โหลด
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Split Screen -->
+    <div class="split-screen pt-20">
+        <!-- Left Panel - Profile -->
+        <div class="left-panel w-1/2 p-8 flex flex-col justify-center items-center relative">
+            <!-- Profile Section -->
+            <div class="text-center mb-12">
+                <div class="floating-3d mb-8">
+                    <div class="w-48 h-48 mx-auto aurora rounded-full p-4 relative cosmic-glow">
+                        <div class="w-full h-full bg-white rounded-full flex items-center justify-center neon-border relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 via-purple-50 to-yellow-100 opacity-50"></div>
+                            <div class="text-center relative z-10">
+                                <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-200 to-purple-200 rounded-full flex items-center justify-center shadow-lg">
+                                    <span class="text-gray-600 text-5xl">👤</span>
+                                </div>
+                                <p class="text-sm text-gray-600 font-semibold">รูปโปรไฟล์</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="text-5xl font-bold text-white glow-text mb-4">
+                    ชยากร<br>สายกระสนุ
+                </h1>
+                <h2 class="text-2xl text-blue-300 mb-2">CHAYAKON SAIKRASUN</h2>
+                <p class="text-xl text-yellow-300 font-semibold mb-8">เอิรธ์ | นักสร้างสรรค์ดิจิทัล</p>
+
+                <!-- Contact Hexagons -->
+                <div class="grid grid-cols-2 gap-6 max-w-md mx-auto">
+                    <div class="hexagon mx-auto" title="เบอร์โทรศัพท์">
+                        <div class="hexagon-content">
+                            <div class="text-lg text-blue-600">📱</div>
+                            <div class="text-xs text-gray-600 mt-1 font-semibold">065-392-5590</div>
+                        </div>
+                    </div>
+                    <div class="hexagon mx-auto" title="chayagorn102546@gmail.com">
+                        <div class="hexagon-content">
+                            <div class="text-lg text-blue-600">📧</div>
+                            <div class="text-xs text-gray-600 mt-1 font-semibold leading-tight">chayagorn<br>102546<br>@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="hexagon mx-auto" title="วันเกิด">
+                        <div class="hexagon-content">
+                            <div class="text-lg text-blue-600">🎂</div>
+                            <div class="text-xs text-gray-600 mt-1 font-semibold">10 ต.ค. 2545</div>
+                        </div>
+                    </div>
+                    <div class="hexagon mx-auto" title="ที่อยู่">
+                        <div class="hexagon-content">
+                            <div class="text-lg text-blue-600">📍</div>
+                            <div class="text-xs text-gray-600 mt-1 font-semibold">สุรินทร์</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="morphing-card rounded-3xl p-6 w-full max-w-md">
+                <h3 class="text-xl font-bold text-white mb-4 text-center">📞 ติดต่อ</h3>
+                <div class="space-y-3 text-white">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-yellow-300">📱</span>
+                        <span>065-392-5590</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-blue-300">📧</span>
+                        <span class="text-sm">chayagorn102546@gmail.com</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-red-300">📍</span>
+                        <span class="text-sm">5 หมู่ที่ 18 ต.เมืองลีง อ.จอมพระ จ.สุรินทร์ 32180</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Content -->
+        <div class="right-panel w-1/2 p-8 overflow-y-auto">
+            <!-- Education Section -->
+            <section class="mb-12">
+                <h3 class="text-3xl font-bold text-white glow-text mb-8 text-center">🎓 การศึกษา</h3>
+                
+                <div class="space-y-6">
+                    <!-- Current Education -->
+                    <div class="morphing-card rounded-3xl p-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="hexagon w-16 h-16">
+                                <div class="hexagon-content">
+                                    <span class="text-blue-600 text-2xl">🎓</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-white">
+                                <h4 class="text-xl font-bold mb-2">ปริญญาตรี (กำลังศึกษา)</h4>
+                                <p class="text-blue-300 font-semibold mb-1">เทคโนโลยีสารสนเทศและดิจิทัล</p>
+                                <p class="text-yellow-300 mb-1">Data Science & AI</p>
+                                <p class="text-gray-300 text-sm mb-1">มหาวิทยาลัยกาฬสินธุ์</p>
+                                <p class="text-gray-400 text-sm mb-2">2565 – ปัจจุบัน</p>
+                                <div class="inline-block aurora text-white px-4 py-1 rounded-full text-sm font-bold">
+                                    GPA 3.63
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Education -->
+                    <div class="morphing-card rounded-3xl p-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="hexagon w-16 h-16">
+                                <div class="hexagon-content">
+                                    <span class="text-blue-600 text-2xl">🎨</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-white">
+                                <h4 class="text-xl font-bold mb-2">ปวช. ศิลปกรรม</h4>
+                                <p class="text-purple-300 font-semibold mb-1">คอมพิวเตอร์กราฟิก</p>
+                                <p class="text-gray-300 text-sm mb-1">วิทยาลัยอาชีวศึกษาสุรินทร์</p>
+                                <p class="text-gray-400 text-sm mb-2">2562 – 2564</p>
+                                <div class="inline-block aurora text-white px-4 py-1 rounded-full text-sm font-bold">
+                                    GPA 3.40
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="mb-12">
+                <h3 class="text-3xl font-bold text-white glow-text mb-8 text-center">💼 ประสบการณ์</h3>
+                
+                <div class="morphing-card rounded-3xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="hexagon w-16 h-16">
+                            <div class="hexagon-content">
+                                <span class="text-blue-600 text-2xl">🏢</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-white">
+                            <h4 class="text-xl font-bold mb-2">บริษัท นานาไรซ์ (ไทยแลนด์) จำกัด</h4>
+                            <p class="text-green-300 font-semibold mb-1">นักศึกษาฝึกงาน</p>
+                            <p class="text-gray-400 text-sm mb-3">ปี 2565</p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                ได้รับประสบการณ์ในการทำงานจริงและเรียนรู้กระบวนการทำงานในองค์กร 
+                                พัฒนาทักษะการทำงานเป็นทีมและการแก้ไขปัญหา
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="mb-12">
+                <h3 class="text-3xl font-bold text-white glow-text mb-8 text-center">⚡ ทักษะ</h3>
+                
+                <div class="space-y-6">
+                    <!-- Programming Skills -->
+                    <div class="morphing-card rounded-3xl p-6">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="hexagon w-12 h-12">
+                                <div class="hexagon-content">
+                                    <span class="text-blue-600 text-xl">💻</span>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">ภาษาโปรแกรม</h4>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-white font-medium">PHP</span>
+                                    <span class="text-yellow-300 text-sm">80%</span>
+                                </div>
+                                <div class="wave-skill" style="width: 80%"></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-white font-medium">Python</span>
+                                    <span class="text-blue-300 text-sm">75%</span>
+                                </div>
+                                <div class="wave-skill" style="width: 75%"></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-white font-medium">HTML</span>
+                                    <span class="text-purple-300 text-sm">90%</span>
+                                </div>
+                                <div class="wave-skill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Skills -->
+                    <div class="morphing-card rounded-3xl p-6">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="hexagon w-12 h-12">
+                                <div class="hexagon-content">
+                                    <span class="text-blue-600 text-xl">🎨</span>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">โปรแกรมออกแบบ</h4>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Adobe Photoshop</span>
+                                <span class="text-pink-300 text-sm">85%</span>
+                            </div>
+                            <div class="wave-skill" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Skills -->
+                    <div class="morphing-card rounded-3xl p-6">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="hexagon w-12 h-12">
+                                <div class="hexagon-content">
+                                    <span class="text-blue-600 text-xl">🔧</span>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">ทักษะเทคนิค</h4>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">ประกอบคอมพิวเตอร์</span>
+                                <span class="text-green-300 text-sm">70%</span>
+                            </div>
+                            <div class="wave-skill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="text-center space-y-4">
+                <button onclick="loadMoreInfo()" class="interactive-button morphing-card w-full py-4 rounded-2xl font-bold text-white text-lg hover:scale-105 transition-transform">
+                    🌟 โหลดข้อมูลเพิ่มเติม
+                </button>
+                <div class="flex space-x-4">
+                    <button onclick="contactMe()" class="interactive-button morphing-card flex-1 py-3 rounded-xl font-medium text-white hover:scale-105 transition-transform">
+                        💬 ติดต่อฉัน
+                    </button>
+                    <button onclick="viewPortfolio()" class="interactive-button morphing-card flex-1 py-3 rounded-xl font-medium text-white hover:scale-105 transition-transform">
+                        🎨 ดูผลงาน
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadResume() {
+            alert('🚀 กำลังเตรียมไฟล์ PDF ให้คุณ!\nขณะนี้สามารถใช้ปุ่ม "พิมพ์" แล้วเลือก "Save as PDF" ได้ครับ');
+        }
+
+        function loadMoreInfo() {
+            const button = event.target;
+            button.innerHTML = '⏳ กำลังโหลด...';
+            
+            setTimeout(() => {
+                button.innerHTML = '✅ โหลดข้อมูลเสร็จแล้ว!';
+                setTimeout(() => {
+                    button.innerHTML = '🌟 โหลดข้อมูลเพิ่มเติม';
+                }, 2000);
+            }, 1500);
+        }
+
+        function contactMe() {
+            alert('📱 ติดต่อฉันได้ที่:\n📞 065-392-5590\n📧 chayagorn102546@gmail.com');
+        }
+
+        function viewPortfolio() {
+            alert('🎨 ผลงานของฉันกำลังจะมาเร็วๆ นี้!\nติดตามได้ทางช่องทางต่างๆ ครับ');
+        }
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-3d');
+            const speed = 0.3;
+
+            parallax.forEach(element => {
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Interactive hover effects
+        document.querySelectorAll('.morphing-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02) rotateY(2deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateY(0deg)';
+            });
+        });
+
+        // Smooth animations on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.morphing-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d39fced6e2ee2d',t:'MTc1NDg3MjIyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
